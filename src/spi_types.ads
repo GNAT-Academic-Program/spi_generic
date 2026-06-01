@@ -1,5 +1,3 @@
-with MT;
-
 package Spi_Types is
 
    SPI_Error       : exception;  -- bad config, programming error, unrecoverable
@@ -7,7 +5,6 @@ package Spi_Types is
 
    type Transfer_Status is (Ok, Busy, Timeout);
 
-   --  CPOL/CPHA as defined in the original Motorola SPI specification
    type Clock_Polarity is (Low, High);
    type Clock_Phase    is (Edge_1, Edge_2);
 
@@ -26,7 +23,6 @@ package Spi_Types is
    type Data_Size_Kind is (Data_8, Data_16);
 
    --  Protocol-level clock speed. Driver maps to hardware prescaler.
-   --  Raises SPI_Unsupported if target frequency cannot be achieved.
    type Clock_Frequency is
      (F_100K, F_400K, F_1M, F_2M, F_4M, F_8M, F_10M, F_20M, F_40M);
 

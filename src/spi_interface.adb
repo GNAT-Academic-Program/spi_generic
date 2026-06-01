@@ -8,14 +8,14 @@ package body Spi_Interface is
    --  All byte-loop policy lives in Spi_Data.
 
    package Control is new Spi_Control
-     (Device         => Device,
+     (Device         => Device_T,
       Driver_Init    => Driver_Init,
       Driver_Enable  => Driver_Enable,
       Driver_Disable => Driver_Disable,
       Driver_Reset   => Driver_Reset);
 
    package Data is new Spi_Data
-     (Device          => Device,
+     (Device          => Device_T,
       Driver_Transfer => Driver_Transfer);
 
    ------------

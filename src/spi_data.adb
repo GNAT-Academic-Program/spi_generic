@@ -1,5 +1,3 @@
-with System.Storage_Elements; use System.Storage_Elements;
-
 package body Spi_Data is
 
    -----------
