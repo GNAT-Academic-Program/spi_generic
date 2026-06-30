@@ -4,36 +4,36 @@ package body Spi_Control is
    -- Init --
    ----------
 
-   procedure Init (Dev : in out Device; Cfg : Spi_Types.Spi_Config) is
+   procedure Init (Cfg : Spi_Types.Spi_Config) is
    begin
-      Driver_Init (Dev, Cfg);
+      Driver_Init (Cfg);
    end Init;
 
    -----------
    -- Start --
    -----------
 
-   procedure Enable (Dev : in out Device) is
+   procedure Enable is
    begin
-      Driver_Enable (Dev);
+      Driver_Enable;
    end Enable;
 
    ----------
    -- Stop --
    ----------
 
-   procedure Disable (Dev : in out Device) is
+   procedure Disable is
    begin
-      Driver_Disable (Dev);
+      Driver_Disable;
    end Disable;
 
    -----------
    -- Reset --
    -----------
 
-   procedure Reset (Dev : in out Device) is
+   procedure Reset is
    begin
-      Driver_Reset (Dev);
+      Driver_Reset;
    end Reset;
 
 end Spi_Control;

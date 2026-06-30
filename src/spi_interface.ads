@@ -1,31 +1,30 @@
 with Spi_Types;
 with System.Storage_Elements; use System.Storage_Elements;
 
+--  SPI_Interface models a physical SPI bus (SPI1, SPI2, etc.).
+--  The instantiation IS the bus. There is no Device_T.
+--
+--  Device-level abstractions (CS pin, chip config) belong in chip drivers
+--  like NOR_Flash_Interface or W25Q128, not here.
+
 generic
-   type Device_T is limited private;
-   with procedure Driver_Init     (Dev : in out Device_T;
-                                   Cfg : Spi_Types.Spi_Config);
-   with procedure Driver_Enable   (Dev : in out Device_T);
-   with procedure Driver_Disable  (Dev : in out Device_T);
-   with procedure Driver_Reset    (Dev : in out Device_T);
-   with procedure Driver_Transfer (Dev : in out Device_T;
-                                   TX  : Storage_Element;
+   with procedure Driver_Init     (Cfg : Spi_Types.Spi_Config);
+   with procedure Driver_Enable;
+   with procedure Driver_Disable;
+   with procedure Driver_Reset;
+   with procedure Driver_Transfer (TX  : Storage_Element;
                                    RX  : out Storage_Element);
 
 package Spi_Interface is
-   subtype Device is Device_T;
 
-   procedure Open  (Dev : in out Device; 
-                    Cfg : Spi_Types.Spi_Config);
+   procedure Open  (Cfg : Spi_Types.Spi_Config);
 
-   procedure Close (Dev : in out Device);
+   procedure Close;
 
-   procedure Reset (Dev : in out Device);
+   procedure Reset;
 
-   procedure Write (Dev     : in out Device;
-                    Buf     : Storage_Array);
+   procedure Write (Buf : Storage_Array);
 
-   procedure Read  (Dev      : in out Device;
-                    Buf      : out Storage_Array);
+   procedure Read  (Buf : out Storage_Array);
 
 end Spi_Interface;

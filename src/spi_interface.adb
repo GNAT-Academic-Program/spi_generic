@@ -8,44 +8,41 @@ package body Spi_Interface is
    --  All byte-loop policy lives in Spi_Data.
 
    package Control is new Spi_Control
-     (Device         => Device_T,
-      Driver_Init    => Driver_Init,
+     (Driver_Init    => Driver_Init,
       Driver_Enable  => Driver_Enable,
       Driver_Disable => Driver_Disable,
       Driver_Reset   => Driver_Reset);
 
    package Data is new Spi_Data
-     (Device          => Device_T,
-      Driver_Transfer => Driver_Transfer);
+     (Driver_Transfer => Driver_Transfer);
 
    ------------
    -- Open   --
    ------------
 
-   procedure Open (Dev : in out Device;
-                   Cfg : Spi_Types.Spi_Config) is
+   procedure Open (Cfg : Spi_Types.Spi_Config) is
    begin
-      Control.Init  (Dev, Cfg);
-      Control.Enable (Dev);
+      Control.Init (Cfg);
+      Control.Enable;
    end Open;
 
    -----------
    -- Close --
    -----------
 
-   procedure Close (Dev : in out Device) is
+   procedure Close is
    begin
-      Control.Disable (Dev);
+      Control.Disable;
    end Close;
 
    -----------
    -- Reset --
    -----------
 
-   procedure Reset (Dev : in out Device) is
+   procedure Reset is
    begin
-      Control.Disable (Dev);
-      Control.Reset (Dev);
+      Control.Disable;
+      Control.Reset;
    end Reset;
 
 
@@ -53,20 +50,18 @@ package body Spi_Interface is
    -- Write --
    -----------
 
-   procedure Write (Dev     : in out Device;
-                    Buf     : Storage_Array) is
+   procedure Write (Buf : Storage_Array) is
    begin
-      Data.Write (Dev, Buf);
+      Data.Write (Buf);
    end Write;
 
    ----------
    -- Read --
    ----------
 
-   procedure Read (Dev      : in out Device;
-                   Buf      : out Storage_Array) is
+   procedure Read (Buf : out Storage_Array) is
    begin
-      Data.Read (Dev, Buf);
+      Data.Read (Buf);
    end Read;
 
 end Spi_Interface;
