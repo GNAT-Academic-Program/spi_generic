@@ -2,8 +2,8 @@ name = "spi_generic"
 description = "Generic SPI interface for bare-metal Ada"
 version = "0.1.0-dev"
 
-authors = ["Your Name"]
-maintainers = ["Your Name <example@example.com>"]
+authors = ["Olivier Henley"]
+maintainers = ["Olivier Henley <olivier.henley@gmail.com>"]
 licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
 website = ""
 tags = []
