@@ -1,5 +1,5 @@
 name = "spi_generic"
-description = ""
+description = "Generic SPI interface for bare-metal Ada"
 version = "0.1.0-dev"
 
 authors = ["Your Name"]
